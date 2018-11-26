@@ -3,12 +3,13 @@ package com.qa.persistence.repository;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.qa.business.service.AccountService;
 import com.qa.business.service.IAccountService;
 import com.qa.domain.Account;
 
 public class HibernateAccountRepositoryImpl implements AccountRepository {
 
-	private IAccountService acc;
+	private IAccountService acc = new AccountService();
 	private List<Account> customers = new ArrayList<>();
 	
 	public List<Account> findAll() {

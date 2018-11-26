@@ -13,6 +13,7 @@ public class AccountService implements IAccountService{
 	private AccountRepository repo;
 	private IPrizeGenerator prize;
 
+
 	public String generateAccountNum(int givenNumber) {
 		Random rand = new Random();
 		int num = rand.nextInt(givenNumber * 9) + givenNumber;
