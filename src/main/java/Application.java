@@ -1,9 +1,9 @@
-package com.qa;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.qa.business.service.IAccountService;
-import com.qa.business.service.accountNumberGenerator;
+import com.qa.business.service.AccountService;
 
 public class Application {
 
@@ -12,6 +12,6 @@ public class Application {
 		
 		ApplicationContext appContext = new ClassPathXmlApplicationContext("applicationContext.xml");
 		
-		IAccountService service = appContext.getBean("accountService", accountNumberGenerator.class);
+		IAccountService service = appContext.getBean("accountService", AccountService.class);
 	}
 }

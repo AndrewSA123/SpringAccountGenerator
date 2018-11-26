@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class accountNumberGenerator implements IAccountService{
+public class AccountService implements IAccountService{
 	private static List<String> accountList = new ArrayList<String>();
 	private static String accountNumber = " ";
 	private static int givenNumber = 100000;
