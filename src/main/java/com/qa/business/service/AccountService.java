@@ -4,10 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import com.qa.persistence.repository.AccountRepository;
+
 public class AccountService implements IAccountService{
 	private static List<String> accountList = new ArrayList<String>();
 	private static String accountNumber = " ";
 	private static int givenNumber = 100000;
+	private AccountRepository repo;
+	private IPrizeGenerator prize;
 
 	public String generateAccountNum(int givenNumber) {
 		Random rand = new Random();
@@ -46,6 +50,14 @@ public class AccountService implements IAccountService{
 		System.out.println("Account added");
 		
 		return accountNumber;
+	}
+
+	public void setAccountRepo(AccountRepository repo) {
+		this.repo = repo;
+	}
+
+	public void setPrizeGenerator(IPrizeGenerator gen) {
+		this.prize = gen;
 	}
 
 }
