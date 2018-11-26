@@ -4,18 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class TenDigit {
+public class accountNumberGenerator implements IAccountService{
+	private static List<String> accountList = new ArrayList<String>();
+	private static String accountNumber = " ";
+	private static int givenNumber = 100000;
 
-	public static List<String> accountList = new ArrayList<String>();
-
-	public static void main(String[] args) {
-		generateAccountNum();
-	}
-
-	public static void generateAccountNum() {
+	public void generateAccountNum(int givenNumber) {
 		Random rand = new Random();
-		int num = rand.nextInt(900000000) + 100000000;
-		int num2 = rand.nextInt(9) + 1;
+		int num = rand.nextInt(givenNumber * 9) + givenNumber;
 
 		int letterNum = rand.nextInt(3);
 		String letter;
@@ -34,8 +30,13 @@ public class TenDigit {
 			break;
 		}
 
-		String accountNumber = letter + num + num2;
-		System.out.println(accountNumber);
+		if (givenNumber > 10000000) {
+			int num2 = rand.nextInt(3);
+			accountNumber = letter + num + num2;
+		} else {
+
+			accountNumber = letter + num;
+		}
 
 		for (String str : accountList) {
 			if (str.trim().contains(accountNumber))
@@ -46,4 +47,3 @@ public class TenDigit {
 	}
 
 }
-
