@@ -1,16 +1,16 @@
 package com.qa.domain;
 
-public class AccountEight {
+public class Account {
 
 	private String accountNumber;
 	private String firstName;
 	private String lastName;
 
-	public AccountEight() {
+	public Account() {
 
 	}
 
-	public AccountEight(String firstName, String lastName) {
+	public Account(String firstName, String lastName) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 
