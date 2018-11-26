@@ -3,11 +3,13 @@ package com.qa.persistence.repository;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.qa.business.service.IAccountService;
 import com.qa.domain.Account;
 
 public class HibernateAccountRepositoryImpl implements AccountRepository {
 
-	List<Account> customers = new ArrayList<>();
+	private IAccountService acc;
+	private List<Account> customers = new ArrayList<>();
 	
 	public List<Account> findAll() {
 	
@@ -17,13 +19,17 @@ public class HibernateAccountRepositoryImpl implements AccountRepository {
 	
 	public String createAccount(String firstName, String lastName) {
 		Account account = new Account();
-		
+		account.setAccountNumber(acc.generateAccountNum(6));
 		account.setFirstName(firstName);
 		account.setLastName(lastName);
 		
 		customers.add(account);
 		
 		return "Account successfully created";
+	}
+	
+	public void setService(IAccountService account) {
+		this.acc = account;
 	}
 
 }

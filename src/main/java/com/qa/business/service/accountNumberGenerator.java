@@ -1,4 +1,4 @@
-package com.qa.service;
+package com.qa.business.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,7 @@ public class accountNumberGenerator implements IAccountService{
 	private static String accountNumber = " ";
 	private static int givenNumber = 100000;
 
-	public void generateAccountNum(int givenNumber) {
+	public String generateAccountNum(int givenNumber) {
 		Random rand = new Random();
 		int num = rand.nextInt(givenNumber * 9) + givenNumber;
 
@@ -44,6 +44,8 @@ public class accountNumberGenerator implements IAccountService{
 		}
 		accountList.add(accountNumber);
 		System.out.println("Account added");
+		
+		return accountNumber;
 	}
 
 }
