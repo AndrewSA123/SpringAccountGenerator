@@ -9,7 +9,7 @@ public interface AccountRepository {
 	
 	public List<Account> findAll();
 	
-	public String createAccount(String firstName, String lastName);
+	public String createAccount(String firstName, String lastName, int accountType);
 
 	public void setService(IAccountService account);
 }

@@ -18,9 +18,9 @@ public class HibernateAccountRepositoryImpl implements AccountRepository {
 	}
 
 	
-	public String createAccount(String firstName, String lastName) {
+	public String createAccount(String firstName, String lastName, int accountType) {
 		Account account = new Account();
-		account.setAccountNumber(acc.generateAccountNum(6));
+		account.setAccountNumber(acc.generateAccountNum(accountType));
 		account.setFirstName(firstName);
 		account.setLastName(lastName);
 		
