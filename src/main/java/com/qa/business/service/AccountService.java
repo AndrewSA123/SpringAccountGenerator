@@ -4,15 +4,26 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import com.qa.domain.Account;
 import com.qa.persistence.repository.AccountRepository;
 
 public class AccountService implements IAccountService{
-	private static List<String> accountList = new ArrayList<String>();
-	private static String accountNumber = " ";
-	private static int givenNumber = 100000;
+	private List<Account> accountList = new ArrayList<Account>();
+	private String accountNumber = " ";
+	private int givenNumber = 100000;
 	private AccountRepository repo;
 	private IPrizeGenerator prize;
+	private Account account;
 
+	public String CreateAccount(String firstName, String lastName, int accountType) {
+
+		account = new Account();
+		account.setFirstName(firstName);
+		account.setLastName(lastName);
+		account.setAccountNumber(generateAccountNum(accountType));
+
+		return "Account successfully created";
+	}
 
 	public String generateAccountNum(int givenNumber) {
 		Random rand = new Random();
@@ -43,12 +54,10 @@ public class AccountService implements IAccountService{
 			accountNumber = letter + num;
 		}
 
-		for (String str : accountList) {
-			if (str.trim().contains(accountNumber))
+		for (Account str : accountList) {
+			if (str.getAccountNumber().contains(accountNumber))
 				System.out.println("Account Exists");
 		}
-		accountList.add(accountNumber);
-		System.out.println("Account added");
 		
 		return accountNumber;
 	}
